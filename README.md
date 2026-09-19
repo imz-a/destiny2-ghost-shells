@@ -9,6 +9,7 @@
 
 ## 功能 / Features
 
+- 「什么是机壳」30 秒入门指南（可折叠）· Beginner's guide for non-players
 - 英雄区精选渲染图轮播 · Hero carousel of featured shells
 - 名称 / 风味文本 / Hash 搜索 · Search by name, flavor text or hash
 - 稀有度筛选 + 排序 + 随机一览 + 卡片密度调节 · Rarity filter, sort, random pick, density slider

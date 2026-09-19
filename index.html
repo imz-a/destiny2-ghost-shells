@@ -68,6 +68,33 @@ h1 .thin{display:block; font-size:.42em; font-weight:600; color:var(--muted); le
 .hero-dots{position:absolute; right:26px; bottom:26px; z-index:3; display:flex; gap:7px}
 .hero-dots i{width:18px; height:3px; background:var(--line2); cursor:pointer; transition:.3s}
 .hero-dots i.on{background:var(--gold)}
+/* ---------- 入门指南 ---------- */
+.intro{border-bottom:1px solid var(--line); background:linear-gradient(180deg,rgba(224,182,103,.045),rgba(224,182,103,0) 40%),var(--bg); position:relative; z-index:1}
+.intro-inner{padding:52px 64px 46px}
+.intro-head{display:flex; align-items:flex-end; justify-content:space-between; gap:20px; flex-wrap:wrap}
+.intro-head h2{font-family:var(--font-d); font-size:clamp(26px,3vw,38px); font-weight:700; letter-spacing:.02em; margin:12px 0 4px}
+.intro-head .sub{color:var(--muted); font-size:14px}
+.intro-toggle{font:600 12px var(--font-d); letter-spacing:.14em; color:var(--muted); background:transparent; border:1px solid var(--line2); padding:8px 16px; cursor:pointer; transition:.22s; clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
+.intro-toggle:hover{color:var(--gold); border-color:var(--gold)}
+.intro-body{display:grid; grid-template-columns:minmax(280px,5fr) 7fr; gap:36px; margin-top:30px}
+.intro-body.hidden, .intro-gloss.hidden{display:none}
+.intro-story p{color:#cdd3e2; font-size:14.5px; text-wrap:pretty}
+.intro-story p b{color:var(--gold); font-weight:600}
+.intro-story p + p{margin-top:12px}
+.intro-story blockquote{margin-top:22px; padding:18px 20px; border-left:2px solid var(--gold); background:rgba(224,182,103,.06); font-size:13.5px; color:#d8cfae; line-height:1.75; text-wrap:pretty}
+.intro-story blockquote footer{margin-top:8px; font:600 11px var(--font-d); letter-spacing:.22em; color:var(--faint); border:none; padding:0}
+.intro-cards{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.icard{background:var(--bg2); border:1px solid var(--line); padding:18px 18px 16px; clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%); transition:.25s var(--ease)}
+.icard:hover{background:var(--bg3); border-color:var(--line2)}
+.icard .ih{display:flex; align-items:center; gap:11px}
+.icard img{width:40px; height:40px; object-fit:contain; filter:drop-shadow(0 3px 8px rgba(0,0,0,.5))}
+.icard h3{font-size:14.5px; font-weight:600; letter-spacing:.02em}
+.icard h3 small{display:block; font:600 10px var(--font-d); letter-spacing:.2em; color:var(--faint); text-transform:uppercase}
+.icard p{margin-top:10px; font-size:12.5px; color:var(--muted); line-height:1.7; text-wrap:pretty}
+.intro-gloss{margin-top:28px; border-top:1px dashed var(--line2); padding-top:20px; display:flex; flex-wrap:wrap; gap:8px 10px}
+.gterm{display:flex; align-items:baseline; gap:7px; background:var(--bg2); border:1px solid var(--line); padding:7px 13px; font-size:12px; color:var(--muted)}
+.gterm b{color:var(--text); font-weight:600; white-space:nowrap}
+.gterm b em{font-style:normal; color:var(--faint); font:600 10px var(--font-d); letter-spacing:.1em; margin-left:4px}
 /* ---------- 工具栏 ---------- */
 .toolbar{position:sticky; top:0; z-index:50; background:rgba(10,12,18,.82); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--line); padding:13px 64px; display:flex; flex-wrap:wrap; align-items:center; gap:12px}
 .search{flex:1 1 260px; max-width:430px; position:relative}
@@ -186,12 +213,62 @@ footer a:hover{color:var(--gold)}
     <div class="hero-copy">
       <div class="kicker">Destiny 2 · Compendium</div>
       <h1>机灵外壳全图鉴<span class="thin">Ghost Shell Compendium</span></h1>
-      <p class="lede">收录当前版本全部 <b id="lede-total">—</b> 件机灵外壳（机壳）——守护者伙伴「机灵」的外部装甲。包含异域、传说等全部稀有度，附中英文名称、风味文本与获取来源。数据取自 Bungie 官方 Manifest 公开数据。</p>
+      <p class="lede">收录当前版本全部 <b id="lede-total">—</b> 件机灵外壳（机壳）——守护者伙伴「机灵」的外部装甲。包含异域、传说等全部稀有度，附中英文名称、风味文本与获取来源。数据取自 Bungie 官方 Manifest 公开数据。不了解命运2？先看 <a href="#intro" style="color:var(--gold); text-decoration:none; border-bottom:1px dotted var(--gold)">30 秒入门指南</a>。</p>
       <div class="stats" id="hero-stats"></div>
       <p class="hero-src">检索与字段结构参考：<a href="https://mingyun2.huijiwiki.com/wiki/CustomSearch?subType=17" target="_blank" rel="noopener">命运2中文维基 · 物品检索器</a></p>
     </div>
     <div class="hero-stage" id="hero-stage"></div>
   </header>
+
+  <!-- ============ 入门指南 ============ -->
+  <section class="intro" id="intro">
+    <div class="intro-inner">
+      <div class="intro-head">
+        <div>
+          <div class="kicker">Beginner's Guide</div>
+          <h2>什么是「机壳」？</h2>
+          <p class="sub">给第一次接触《命运2》的朋友：30 秒搞懂这本图鉴在收藏什么。</p>
+        </div>
+        <button class="intro-toggle" id="intro-toggle">收起 ↑</button>
+      </div>
+      <div class="intro-body" id="intro-body">
+        <div class="intro-story">
+          <p>在《命运2》的世界里，每位守护者身边都漂浮着一个小小的机械同伴——<b>机灵（Ghost）</b>。它是巨大的白色星球体「旅行者」在「大崩溃」之际，用自己最后的光能碎片创造的智慧造物；每台机灵都在茫茫人海中寻找那个被选中的人，把他从死亡中唤醒，成为手持光能、守护人类的<b>守护者</b>。</p>
+          <p>而<b>机壳（Ghost Shell）</b>，就是机灵的外部装甲——也就是这本图鉴收藏的全部。换壳不会让机灵变强或变弱，但它决定了你家小机灵的气质：棱角分明的军用风格、糖霜水晶的节日限定、赛博霓虹的都市造型……对守护者来说，机灵是永不背叛的伙伴，机壳就是你们共同的个性宣言。</p>
+          <blockquote>
+            「旅行者在弥留之际创造了机灵……去寻找那些能将它的光化为武器的人——守护者，来保护我们，做旅行者自己已无法做到的事。」
+            <footer>—— 代言人 THE SPEAKER</footer>
+          </blockquote>
+        </div>
+        <div class="intro-cards">
+          <div class="icard">
+            <div class="ih"><img src="assets/icons/953357968.jpg" alt="机灵"><h3>机灵<small>Ghost · 伙伴</small></h3></div>
+            <p>光能构成的小型智能体：复活倒下的你、照亮黑暗、破译古锁、扫描敌情、召唤载具……还会在你阵亡时碎碎念。只要它还在，守护者就不会真正死去。</p>
+          </div>
+          <div class="icard">
+            <div class="ih"><img src="assets/icons/227918504.jpg" alt="机壳"><h3>机壳<small>Shell · 外观收藏</small></h3></div>
+            <p>机灵的可替换外壳，由多块自由旋转的装甲板包裹着中央的眼睛。自《凌光之刻》资料片起为纯外观道具，加成功能全部移入「机灵模块」系统。</p>
+          </div>
+          <div class="icard">
+            <div class="ih"><img src="assets/icons/113124080.jpg" alt="稀有度"><h3>稀有度<small>Rarity · 金紫有别</small></h3></div>
+            <p>分为 异域(金)/传说(紫)/稀有(蓝)/罕见(绿)/普通(灰) 五档。本图鉴中异域 409 件、传说 168 件——金光闪闪的多数是 Eververse 上架的装饰品。</p>
+          </div>
+          <div class="icard">
+            <div class="ih"><img src="assets/icons/286098604.jpg" alt="获取"><h3>获取途径<small>Source · 每壳有故事</small></h3></div>
+            <p>大部分来自 Eververse 光尘商店（赛季轮换、用光尘购买）；也有赛季通行证奖励、突袭与地牢的荣耀见证、节日活动限定——比如兔叽机壳只属于曙光节。</p>
+          </div>
+        </div>
+      </div>
+      <div class="intro-gloss" id="intro-gloss">
+        <span class="gterm"><b>机灵<em>GHOST</em></b>旅行者创造的智慧碎片，守护者的永生伙伴</span>
+        <span class="gterm"><b>机壳<em>GHOST SHELL</em></b>机灵的外部装甲 = 本图鉴主角</span>
+        <span class="gterm"><b>光尘<em>BRIGHT DUST</em></b>Eververse 商店的免费货币，做任务即可赚取</span>
+        <span class="gterm"><b>机灵模块<em>GHOST MODS</em></b>装进机壳的功能插件：经验/追踪/经济/活动四类</span>
+        <span class="gterm"><b>数据追踪器<em>KILL TRACKER</em></b>部分机壳自带的击杀计数器</span>
+        <span class="gterm"><b>守护者<em>GUARDIAN</em></b>被机灵复活、驾驭光能的战士，也就是「你」</span>
+      </div>
+    </div>
+  </section>
 
   <!-- ============ 工具栏 ============ -->
   <nav class="toolbar" id="toolbar">
@@ -377,6 +454,22 @@ $("#dice").addEventListener("click", () => {
   if (!view.length) return;
   openModal(view.map(i=>i.hash), view[Math.floor(Math.random()*view.length)].hash);
 });
+
+/* ================= 入门指南折叠 ================= */
+(function introToggle(){
+  const KEY = "d2gs-intro-collapsed";
+  const body = $("#intro-body"), gloss = $("#intro-gloss"), btn = $("#intro-toggle");
+  function setCollapsed(v){
+    body.classList.toggle("hidden", v);
+    gloss.classList.toggle("hidden", v);
+    btn.textContent = v ? "展开介绍 ↓" : "收起 ↑";
+    try { localStorage.setItem(KEY, v ? "1" : "0"); } catch(e){}
+  }
+  let init = false;
+  try { init = localStorage.getItem(KEY) === "1"; } catch(e){}
+  if (init) setCollapsed(true);
+  btn.addEventListener("click", () => setCollapsed(!body.classList.contains("hidden")));
+})();
 
 /* ================= 详情弹窗 ================= */
 const modal = $("#modal");
